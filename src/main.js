@@ -24,13 +24,13 @@ module.exports.loop = function () {
         Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE], newName, {memory: {role: 'harvester'}});
     }
     
-    if(builders.length < 3) {
+    if(harvesters.length > 2 && builders.length < 3) {
         var newName = 'Builder' + Game.time;
         console.log('Spawning new builders: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE], newName, {memory: {role: 'builder'}});
     }
     
-    if(upgraders.length < 1) {
+    if(builders.length >1 && upgraders.length < 1) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,WORK,CARRY,MOVE,MOVE], newName, {memory: {role: 'upgrader'}});
@@ -48,17 +48,12 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
-            // roleUpgrader.run(creep);
             roleHarvester.run(creep);
-            // roleBuilder.run(creep);
         }
         if(creep.memory.role == 'upgrader') {
-            // roleHarvester.run(creep);
             roleUpgrader.run(creep);
-            // roleBuilder.run(creep);
         }
         if(creep.memory.role == 'builder') {
-            // roleHarvester.run(creep);
             roleBuilder.run(creep);
         }
     }
