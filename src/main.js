@@ -53,13 +53,13 @@ module.exports.loop = function () {
             // roleBuilder.run(creep);
         }
         if(creep.memory.role == 'upgrader') {
-            roleHarvester.run(creep);
-            // roleUpgrader.run(creep);
+            // roleHarvester.run(creep);
+            roleUpgrader.run(creep);
             // roleBuilder.run(creep);
         }
         if(creep.memory.role == 'builder') {
-            roleHarvester.run(creep);
-            // roleBuilder.run(creep);
+            // roleHarvester.run(creep);
+            roleBuilder.run(creep);
         }
     }
 }
